@@ -1,8 +1,7 @@
-﻿namespace StudentPortal_MVC_CRUD.Models.Entities
+﻿namespace StudentPortal_MVC_CRUD.Models
 {
-    public class Teacher
+    public class AddTeacherViewModel
     {
-        public int TeacherId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
