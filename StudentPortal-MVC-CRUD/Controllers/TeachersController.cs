@@ -34,7 +34,7 @@ namespace StudentPortal_MVC_CRUD.Controllers
             await dbContext.Teachers.AddAsync(teacher);
             await dbContext.SaveChangesAsync();
 
-            return RedirectToAction("List","Teacher");
+            return RedirectToAction("List","Teachers");
         }
 
         [HttpGet]
