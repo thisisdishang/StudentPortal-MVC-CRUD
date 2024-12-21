@@ -34,7 +34,7 @@ namespace StudentPortal_MVC_CRUD.Controllers
             await dbContext.Teachers.AddAsync(teacher);
             await dbContext.SaveChangesAsync();
 
-            return View();
+            return RedirectToAction("List","Teacher");
         }
 
         [HttpGet]
@@ -42,6 +42,30 @@ namespace StudentPortal_MVC_CRUD.Controllers
         {
             var teachers=await dbContext.Teachers.ToListAsync();
             return View(teachers);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var teacher=await dbContext.Teachers.FindAsync(id);
+            return View(teacher);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Teacher viewModel)
+        {
+            var teacher = await dbContext.Teachers.FindAsync(viewModel.TeacherId);
+
+            if(teacher != null)
+            {
+                teacher.Name = viewModel.Name;
+                teacher.Email = viewModel.Email;
+                teacher.Phone = viewModel.Phone;
+
+                await dbContext.SaveChangesAsync();
+            }
+
+            return RedirectToAction("List", "Teachers");
         }
     }
 }
