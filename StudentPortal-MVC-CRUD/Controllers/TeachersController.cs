@@ -34,20 +34,20 @@ namespace StudentPortal_MVC_CRUD.Controllers
             await dbContext.Teachers.AddAsync(teacher);
             await dbContext.SaveChangesAsync();
 
-            return RedirectToAction("List","Teachers");
+            return RedirectToAction("List", "Teachers");
         }
 
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            var teachers=await dbContext.Teachers.ToListAsync();
+            var teachers = await dbContext.Teachers.ToListAsync();
             return View(teachers);
         }
 
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            var teacher=await dbContext.Teachers.FindAsync(id);
+            var teacher = await dbContext.Teachers.FindAsync(id);
             return View(teacher);
         }
 
@@ -56,7 +56,7 @@ namespace StudentPortal_MVC_CRUD.Controllers
         {
             var teacher = await dbContext.Teachers.FindAsync(viewModel.TeacherId);
 
-            if(teacher != null)
+            if (teacher != null)
             {
                 teacher.Name = viewModel.Name;
                 teacher.Email = viewModel.Email;
@@ -66,6 +66,21 @@ namespace StudentPortal_MVC_CRUD.Controllers
             }
 
             return RedirectToAction("List", "Teachers");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Teacher viewModel)
+        {
+            var teacher = await dbContext.Teachers.AsNoTracking().FirstOrDefaultAsync(x => x.TeacherId == viewModel.TeacherId);
+
+            if (teacher != null)
+            {
+                dbContext.Teachers.Remove(viewModel);
+                await dbContext.SaveChangesAsync();
+            }
+
+            return RedirectToAction("List", "Teachers");
+
         }
     }
 }
