@@ -4,7 +4,8 @@ namespace StudentPortal_MVC_CRUD.Controllers
 {
     public class AssignmentController : Controller
     {
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Add()
         {
             return View();
         }
