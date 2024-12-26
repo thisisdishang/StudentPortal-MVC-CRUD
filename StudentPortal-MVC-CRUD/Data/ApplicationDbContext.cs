@@ -13,5 +13,7 @@ namespace StudentPortal_MVC_CRUD.Data
         public DbSet<Student> Students { get; set; }
 
         public DbSet<Teacher> Teachers { get; set; }
+
+        public DbSet<Assignment> Assignment { get; set; }
     }
 }
