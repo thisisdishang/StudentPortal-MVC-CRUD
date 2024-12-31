@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<StudentPortal_MVC_CRUD.Models.Entities.Assignment>
+
+<h1>Assignment</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Assignment Id</th>
+            <th>Assignment Number</th>
+            <th>Assignment Sem</th>
+            <th>Assignment Content</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var assignment in Model)
+        {
+            <tr>
+                <td>@assignment.AssignmentId</td>
+                <td>@assignment.AssignmentNumber</td>
+                <td>@assignment.AssignmentSem</td>
+                <td>@assignment.AssignmentContent</td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="Students" asp-action="Edit" asp-route-id="@assignment.AssignmentId">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using StudentPortal_MVC_CRUD.Data;
 using StudentPortal_MVC_CRUD.Models;
 using StudentPortal_MVC_CRUD.Models.Entities;
@@ -33,8 +34,15 @@ namespace StudentPortal_MVC_CRUD.Controllers
             await dbContext.Assignment.AddAsync(assignment);
             await dbContext.SaveChangesAsync();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("List","Assignment");
 
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> List()
+        {
+            var assignment = await dbContext.Assignment.ToListAsync();
+            return View(assignment);
         }
     }
 
