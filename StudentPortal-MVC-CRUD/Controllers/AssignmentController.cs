@@ -28,7 +28,8 @@ namespace StudentPortal_MVC_CRUD.Controllers
             {
                 AssignmentNumber = viewModel.AssignmentNumber,
                 AssignmentSem = viewModel.AssignmentSem,
-                AssignmentContent = viewModel.AssignmentContent
+                AssignmentContent = viewModel.AssignmentContent,
+                Subject=viewModel.Subject
             };
 
             await dbContext.Assignment.AddAsync(assignment);

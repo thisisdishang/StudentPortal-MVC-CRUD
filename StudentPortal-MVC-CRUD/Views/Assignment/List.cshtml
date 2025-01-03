@@ -15,6 +15,7 @@
             <th>Assignment Number</th>
             <th>Assignment Sem</th>
             <th>Assignment Content</th>
+            <th>Assignment Subject</th>
             <th> </th>
         </tr>
     </thead>
@@ -26,6 +27,7 @@
                 <td>@assignment.AssignmentNumber</td>
                 <td>@assignment.AssignmentSem</td>
                 <td>@assignment.AssignmentContent</td>
+                <td>@assignment.Subject</td>
                 <td>
                     <a class="btn btn-primary" asp-controller="Students" asp-action="Edit" asp-route-id="@assignment.AssignmentId">Edit</a>
                 </td>
